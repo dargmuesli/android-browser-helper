@@ -293,7 +293,7 @@ public class TwaLauncher {
                      // for further details.
         }
         Log.d(TAG, "Launching Trusted Web Activity.");
-        TrustedWebActivityIntent intent = builder.build(mSession);
+        TrustedWebActivityIntent intent = getIntent(builder.build(mSession));
         if (mStartupUptimeMillis != 0) {
             intent.getIntent().putExtra(EXTRA_STARTUP_UPTIME_MILLIS, mStartupUptimeMillis);
         }
@@ -305,6 +305,10 @@ public class TwaLauncher {
         if (completionCallback != null) {
             completionCallback.run();
         }
+    }
+
+    protected TrustedWebActivityIntent getIntent(TrustedWebActivityIntent intent) {
+        return intent;
     }
 
     /**
